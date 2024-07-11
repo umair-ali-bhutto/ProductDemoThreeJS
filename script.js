@@ -19,6 +19,7 @@ const colorapi = [
     { color: '#FAE7CF', name: 'Gold' },
     { color: '#54524F', name: 'Graphite' },
     { color: '#a7c1d9', name: 'Sierra Blue' },
+    { color: '#000000', name: 'Black' },
 ]
 
 function createcolors(array, appendto) {
