@@ -1,14 +1,26 @@
+/**
+ * @author umair-ali-bhutto
+ * This Creates Cube Custom Image On All Sides
+ */
+
 // Initialize the scene, camera, and renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('container').appendChild(renderer.domElement);
 
-// Add a simple object (e.g., a cube)
+// Load texture
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load('logo.png');
+
+// Create a material with the loaded texture
+const material = new THREE.MeshBasicMaterial({ map: texture });
+
+// Add a simple object (e.g., a cube) with the textured material
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
+scene.background = new THREE.Color(0xffffff);
 scene.add(cube);
 
 // Set up camera position
@@ -34,3 +46,6 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+
+
