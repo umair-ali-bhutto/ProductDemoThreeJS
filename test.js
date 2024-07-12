@@ -82,17 +82,22 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
 
     model.traverse((child) => {
 
-        if (child.isMesh && child.material.name == 'acadf662e623') {
+        if (child.isMesh && child.material.name == 'm5_73e324d3_bd1ede84') {
             modelMaterials.push(child.material)
         }
 
 
-        // khidki
+        //// Khidki
         // if (child.isMesh && child.material.name == 'acadf662e623') {
         //     modelMaterials.push(child.material)
         // }
-
-        // kachra picker
+        //
+        //// Handle
+        // if (child.isMesh && child.material.name == 'm8_73e324d3_bd1ede84') {
+        //     modelMaterials.push(child.material)
+        // }
+        //
+        //// Kachra Picker
         // if (child.isMesh && child.material.name == 'm4_73e324d3_bd1ede84') {
         //     modelMaterials.push(child.material)
         // }
