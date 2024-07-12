@@ -128,6 +128,13 @@ window.addEventListener('dblclick', () => {
     console.log(camera.position)
 })
 
+const min = -5;
+const max = 5;
+
+function getRandomCoordinate(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 document.querySelectorAll('.color-item').forEach(function (el, i) {
     document.querySelectorAll('.color-item')[i].addEventListener('click', (e) => {
         iphonematerials.forEach(function (material, i) {
@@ -137,7 +144,9 @@ document.querySelectorAll('.color-item').forEach(function (el, i) {
             anime({
                 targets: camera.position,
                 z: [camera.position.z, 3.95],
-                x: -2.62,
+                // x: -2.62,
+                x: getRandomCoordinate(min, max),
+                y: getRandomCoordinate(min, max),
                 delay: 10,
                 duration: 500,
                 easing: 'easeInOutCubic'
