@@ -82,36 +82,36 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
 
     model.traverse((child) => {
 
-        //// Khidki
-        // if (child.isMesh && child.material.name == 'acadf662e623') {
-        //     modelMaterials.push(child.material)
-        // }
-        //
-        //// Handle
-        // if (child.isMesh && child.material.name == 'm8_73e324d3_bd1ede84') {
-        //     modelMaterials.push(child.material)
-        // }
-        //
-        //// Kachra Picker
-        // if (child.isMesh && child.material.name == 'm4_73e324d3_bd1ede84') {
-        //     modelMaterials.push(child.material)
-        // }
-        //// Hydraulic
-        // if (child.isMesh && child.material.name == 'm5_73e324d3_bd1ede84') {
-        //     modelMaterials.push(child.material)
-        // }
-        //// Seat and Mirror
-        // if (child.isMesh && child.material.name == 'm7_73e324d3_bd1ede84') {
-        //     modelMaterials.push(child.material)
-        // }
-        //// Body
-        // if (child.isMesh && child.material.name == 'm2_73e324d3_bd1ede84') {
-        //     modelMaterials.push(child.material)
-        // }
-        //// Rims
-        // if (child.isMesh && child.material.name == 'm1_73e324d3_bd1ede84') {
-        //     modelMaterials.push(child.material)
-        // }
+        // Khidki
+        if (child.isMesh && child.material.name == 'acadf662e623') {
+            modelMaterials.push(child.material)
+        }
+        
+        // Handle
+        if (child.isMesh && child.material.name == 'm8_73e324d3_bd1ede84') {
+            modelMaterials.push(child.material)
+        }
+        
+        // Kachra Picker
+        if (child.isMesh && child.material.name == 'm4_73e324d3_bd1ede84') {
+            modelMaterials.push(child.material)
+        }
+        // Hydraulic
+        if (child.isMesh && child.material.name == 'm5_73e324d3_bd1ede84') {
+            modelMaterials.push(child.material)
+        }
+        // Seat and Mirror
+        if (child.isMesh && child.material.name == 'm7_73e324d3_bd1ede84') {
+            modelMaterials.push(child.material)
+        }
+        // Body
+        if (child.isMesh && child.material.name == 'm2_73e324d3_bd1ede84') {
+            modelMaterials.push(child.material)
+        }
+        // Rims
+        if (child.isMesh && child.material.name == 'm1_73e324d3_bd1ede84') {
+            modelMaterials.push(child.material)
+        }
 
 
     })
@@ -130,34 +130,43 @@ window.addEventListener('dblclick', () => {
 
 
 
-const min = -6;
-const max = 6;
+const min = -2;
+const max = 2;
 
 function getRandomCoordinate(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function getRandomSignedNumber(number) {
+    const sign = Math.random() < 0.5 ? -1 : 1;
+    return number * sign;
+}
+
+let clickCounter = 0;
+
+function getAlternatingSignedNumber(value) {
+    const sign = Math.floor(clickCounter / 4) % 2 === 0 ? 1 : -1;
+    return value * sign;
+}
+
+
 
 document.querySelectorAll('.color-item').forEach(function (el, i) {
     document.querySelectorAll('.color-item')[i].addEventListener('click', (e) => {
 
-
-
-
-
-        //let a = [];
-
+        clickCounter++;
 
         modelMaterials.forEach(function (material, i) {
-            //a.push({key:material.name,value:material.color});
-
             material.color.set(new THREE.Color(e.target.style.background))
 
             anime({
                 targets: camera.position,
-                // z: [camera.position.z, 3.95],
-                // x: getRandomCoordinate(min, max),
-                // y: getRandomCoordinate(min, max),
+                //z: [camera.position.z, 3.95],
+                
+                x: getRandomCoordinate(min, max),
+                y: getRandomCoordinate(min, max),
+                z: getAlternatingSignedNumber(5),
+                
                 //x: [camera.position.x, getRandomCoordinate(min, max)],
                 //y: [camera.position.y, getRandomCoordinate(min, max)],
                 delay: 10,
