@@ -82,11 +82,6 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
 
     model.traverse((child) => {
 
-        if (child.isMesh && child.material.name == 'm5_73e324d3_bd1ede84') {
-            modelMaterials.push(child.material)
-        }
-
-
         //// Khidki
         // if (child.isMesh && child.material.name == 'acadf662e623') {
         //     modelMaterials.push(child.material)
@@ -101,8 +96,23 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
         // if (child.isMesh && child.material.name == 'm4_73e324d3_bd1ede84') {
         //     modelMaterials.push(child.material)
         // }
+        //// Hydraulic
+        // if (child.isMesh && child.material.name == 'm5_73e324d3_bd1ede84') {
+        //     modelMaterials.push(child.material)
+        // }
+        //// Seat and Mirror
+        // if (child.isMesh && child.material.name == 'm7_73e324d3_bd1ede84') {
+        //     modelMaterials.push(child.material)
+        // }
+        //// Body
+        // if (child.isMesh && child.material.name == 'm2_73e324d3_bd1ede84') {
+        //     modelMaterials.push(child.material)
+        // }
+        //// Rims
+        // if (child.isMesh && child.material.name == 'm1_73e324d3_bd1ede84') {
+        //     modelMaterials.push(child.material)
+        // }
 
-    
 
     })
 
@@ -135,12 +145,12 @@ document.querySelectorAll('.color-item').forEach(function (el, i) {
 
 
 
-//let a = [];
+        //let a = [];
 
 
         modelMaterials.forEach(function (material, i) {
-           //a.push({key:material.name,value:material.color});
-            
+            //a.push({key:material.name,value:material.color});
+
             material.color.set(new THREE.Color(e.target.style.background))
 
             anime({

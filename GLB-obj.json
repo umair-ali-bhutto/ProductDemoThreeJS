@@ -14,28 +14,24 @@
         "key": "m4_73e324d3_bd1ede84",
         "value": 16777215
     },
+    //Hydraulic
     {
         "key": "m5_73e324d3_bd1ede84",
         "value": 16777215
     },
+    //Seat and Mirror
     {
         "key": "m7_73e324d3_bd1ede84",
         "value": 16777215
     },
-    {
-        "key": "m9_73e324d3_bd1ede84",
-        "value": 16777215
-    },
+    //Body
     {
         "key": "m2_73e324d3_bd1ede84",
         "value": 16777215
     },
+    //Rims
     {
         "key": "m1_73e324d3_bd1ede84",
-        "value": 16777215
-    },
-    {
-        "key": "m3_73e324d3_bd1ede84",
         "value": 16777215
     }
 ]
