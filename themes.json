@@ -1,5 +1,29 @@
 {
-    "black":{
-        
+    "Black":{
+        "window":"#000000",
+        "handle":"#000000",
+        "bucket":"#000000",
+        "hydraulic":"#000000",
+        "seat_and_mirror":"#000000",
+        "body":"#ffffff",
+        "rims":"#000000"
+    },
+    "Red":{
+        "window":"#000000",
+        "handle":"#000000",
+        "bucket":"#000000",
+        "hydraulic":"#000000",
+        "seat_and_mirror":"#000000",
+        "body":"#ffffff",
+        "rims":"#000000"
+    },
+    "White":{
+        "window":"#000000",
+        "handle":"#000000",
+        "bucket":"#000000",
+        "hydraulic":"#000000",
+        "seat_and_mirror":"#000000",
+        "body":"#ffffff",
+        "rims":"#000000"
     }
 }

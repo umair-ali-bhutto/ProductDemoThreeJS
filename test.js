@@ -15,6 +15,7 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/loa
 
 const colors = [
     { color: '#000000', name: 'Black' },
+    { color: 'rgb(255,0,0)', name: 'Red' },
     { color: '#ffffff', name: 'White' }
 ];
 
@@ -71,8 +72,8 @@ plane.position.y = -4;
 plane.rotation.x = Math.PI / 2;
 
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.maxDistance = 8;
-controls.minDistance = 2;
+controls.maxDistance = 10;
+controls.minDistance = 1;
 controls.enableDamping = true;
 controls.dampingFactor = 0.035;
 controls.maxPolarAngle = Math.PI / 1.7;
@@ -93,7 +94,7 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
     const model = gltf.scene;
     scene.add(model);
     model.scale.set(0.5, 0.5, 0.5);
-    model.position.set(0, 0, 0);
+    model.position.set(0, 0, -1);
 
     model.traverse((child) => {
         if (child.isMesh) {
@@ -106,7 +107,7 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
                 case 'm8_73e324d3_bd1ede84':
                     loadNonDuplicateMaterials(child.material);
                     break;
-                // Kachra Picker
+                // Bucket
                 case 'm4_73e324d3_bd1ede84':
                     loadNonDuplicateMaterials(child.material);
                     break;
@@ -130,60 +131,21 @@ loader.load('bulldozers_2020_05_asm.glb', (gltf) => {
                     break;
             }
         }
-
-        // // Khidki
-        // if (child.isMesh && child.material.name == 'acadf662e623') {
-
-        // }
-
-        // // Handle
-        // if (child.isMesh && child.material.name == 'm8_73e324d3_bd1ede84') {
-        //     modelMaterials.includes(child.material) ? modelMaterials.push(child.material) : '' ;            
-        // }
-
-        // // Kachra Picker
-        // if (child.isMesh && child.material.name == 'm4_73e324d3_bd1ede84') {
-        //     modelMaterials.includes(child.material) ? modelMaterials.push(child.material) : '' ;            
-        // }
-        // // Hydraulic
-        // if (child.isMesh && child.material.name == 'm5_73e324d3_bd1ede84') {
-        //     modelMaterials.includes(child.material) ? modelMaterials.push(child.material) : '' ;            
-        // }
-        // // Seat and Mirror
-        // if (child.isMesh && child.material.name == 'm7_73e324d3_bd1ede84') {
-        //     modelMaterials.includes(child.material) ? modelMaterials.push(child.material) : '' ;            
-        // }
-        // // Body
-        // if (child.isMesh && child.material.name == 'm2_73e324d3_bd1ede84') {
-        //     modelMaterials.includes(child.material) ? modelMaterials.push(child.material) : '' ;            
-        // }
-        // // Rims
-        // if (child.isMesh && child.material.name == 'm1_73e324d3_bd1ede84') {
-        //     modelMaterials.includes(child.material) ? modelMaterials.push(child.material) : '' ;            
-        // }
+    });
+});
 
 
-    })
-
-})
-
-
-new RGBELoader().load('https://assets.codepen.io/7014830/studio.hdr', function (texture) {
+new RGBELoader().load('studio.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
 
     scene.environment = texture;
-})
+});
 
 const min = -2;
 const max = 2;
 
 function getRandomCoordinate(min, max) {
     return Math.random() * (max - min) + min;
-}
-
-function getRandomSignedNumber(number) {
-    const sign = Math.random() < 0.5 ? -1 : 1;
-    return number * sign;
 }
 
 let clickCounter = 0;
@@ -197,15 +159,16 @@ function getAlternatingSignedNumber(value) {
 
 document.querySelectorAll('.color-item').forEach(function (el, i) {
     document.querySelectorAll('.color-item')[i].addEventListener('click', (e) => {
-        console.log(modelMaterials.length);
-
         clickCounter++;
 
+        var theme = themes[e.target.title];
+
         modelMaterials.forEach(function (material) {
-            console.log(e.target.title);
-            console.log(material.name);
-            material.color.set(new THREE.Color(e.target.style.background))
-        })
+            if(theme != undefined){
+                material.color.set(new THREE.Color(theme[convertMaterialNameToEnglish(material.name)]))
+            }
+            // material.color.set(new THREE.Color(e.target.style.background))
+        });
 
         anime({
             targets: camera.position,
@@ -229,10 +192,45 @@ camera.position.z = 5;
 
 function animate() {
     requestAnimationFrame(animate);
-
     controls.update();
-
     renderer.render(scene, camera);
 };
 
 animate();
+
+function convertMaterialNameToEnglish(materialName) {
+    let englishName = '';
+    switch (materialName) {
+        // Khidki
+        case 'acadf662e623':
+            englishName = 'window';
+            break;
+        // Handle
+        case 'm8_73e324d3_bd1ede84':
+            englishName = 'handle';
+            break;
+        // Bucket
+        case 'm4_73e324d3_bd1ede84':
+            englishName = 'bucket';
+            break;
+        // Hydraulic
+        case 'm5_73e324d3_bd1ede84':
+            englishName = 'hydraulic';
+            break;
+        // Seat and Mirror
+        case 'm7_73e324d3_bd1ede84':
+            englishName = 'seat_and_mirror';
+            break;
+        // Body
+        case 'm2_73e324d3_bd1ede84':
+            englishName = 'body';
+            break;
+        // Rims
+        case 'm1_73e324d3_bd1ede84':
+            englishName = 'rims';
+            break;
+        default:
+            break;
+    }
+    return englishName;
+}
