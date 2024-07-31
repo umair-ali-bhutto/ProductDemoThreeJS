@@ -1,29 +1,29 @@
 {
     "Black":{
-        "window":"#000000",
-        "handle":"#000000",
-        "bucket":"#000000",
-        "hydraulic":"#000000",
-        "seat_and_mirror":"#000000",
-        "body":"#ffffff",
-        "rims":"#000000"
+        "window":"black",
+        "handle":"black",
+        "bucket":"black",
+        "hydraulic":"black",
+        "seat_and_mirror":"black",
+        "body":"white",
+        "rims":"yellow"
     },
     "Red":{
-        "window":"#000000",
-        "handle":"#000000",
-        "bucket":"#000000",
-        "hydraulic":"#000000",
-        "seat_and_mirror":"#000000",
-        "body":"#ffffff",
-        "rims":"#000000"
+        "window":"red",
+        "handle":"red",
+        "bucket":"red",
+        "hydraulic":"red",
+        "seat_and_mirror":"red",
+        "body":"white",
+        "rims":"red"
     },
     "White":{
-        "window":"#000000",
-        "handle":"#000000",
-        "bucket":"#000000",
-        "hydraulic":"#000000",
-        "seat_and_mirror":"#000000",
-        "body":"#ffffff",
-        "rims":"#000000"
+        "window":"white",
+        "handle":"white",
+        "bucket":"white",
+        "hydraulic":"white",
+        "seat_and_mirror":"white",
+        "body":"white",
+        "rims":"white"
     }
 }

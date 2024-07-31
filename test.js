@@ -1,6 +1,7 @@
 /**
  * @author umair-ali-bhutto
- *
+ * 
+ * @description 
  * This code creates a 3D scene using the Three.js library, featuring a rotating Tractor model.
  * It also includes a color palette that allows users to change the Tractor's materials by clicking on different colors.
  * Additionally, clicking on a color causes the camera to animate and zoom in, enhancing the user's interaction with the model.
